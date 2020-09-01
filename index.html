@@ -8,7 +8,7 @@
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+		<link rel="stylesheet" href="dist/theme/solarized.css" id="theme">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
@@ -16,8 +16,55 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+                <section>
+                    <h1>EC2 vs RDS</h1>
+                    <section align="left">
+                        <h3>Overall</h3>
+                        <h3>Happenings</h3>
+                        <h3>Future</h3>
+                        <h3>Future</h3>
+                        <h3>State</h3>
+                    </section>
+                </section>
+
+				<section>
+                    <h2>What RDS Provides</h2>
+                   <ul>
+                       <span class="fragment">Quick startup</span><br/>
+                       <span class="fragment">Asynchronous Tools for Management</span><br/>
+                       <span class="fragment">Strong Defenses for AWS's Infrastructure</span><br/>
+                       <span class="fragment">Read Scaling</span><br/>
+                       <span class="fragment">Disaster Recovery at the Component Level</span><br/>
+                       <span class="fragment">Tight Integration with AWS Infrastructure</span><br/>
+                       <span class="fragment">A Hefty Bill</span><br/>
+                   </ul>
+                </section>
+                <section>
+                    <h2>What We Actually Need</h2>
+                    <ul>
+                        <span class="fragment">Performance</span><br/>
+                        <span class="fragment">Synchronous Tools for Management</span><br/>
+                        <span class="fragment">Observability and Control at the Host Level</span><br/>
+                        <span class="fragment">Write Scaling</span><br/>
+                        <span class="fragment">Disaster Recovery at the Service Level</span><br/>
+                        <span class="fragment">Portability</span><br/>
+                        <span class="fragment">Cost containment</span><br/>
+                    </ul>
+                </section>
+                <section>
+                    <h2>What We Actually Need (cont.)</h2>
+                    <ul>
+                        <span class="fragment">Deep Integration with Our Systems</span><br/>
+                        <span class="fragment">CDC That Actually Works</span><br/>
+                        <span class="fragment">Freedom to customize</span><br/>
+                        <ul>
+                            <span class="fragment">Server-side Extensions</span><br/>
+                            <span class="fragment">High-performance code in the DB</span><br/>
+                            <span class="fragment">Indexing</span><br/>
+                        </ul>
+                        <span class="fragment">Zero Downtime Version Changes</span><br/>
+                    </ul>
+                </section>
 			</div>
 		</div>
 
@@ -36,5 +83,51 @@
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
 		</script>
+    <style type="text/css">
+        /* 1. Style header/footer <div> so they are positioned as desired. */
+        #footer-left {
+            position: absolute;
+            bottom: 5%;
+            left: 5%;
+            font-size: 50%;
+        }
+        #footer-right {
+            position: absolute;
+            bottom: 5%;
+            right: 15%;
+        }
+        ul {
+            list-style-type: none;
+        }
+    </style>
+
+    <!-- 2. Create hidden header/footer <div> -->
+    <div id="hidden" style="display:none;">
+        <div id="header">
+            <div id="header-left"></div>
+            <div id="header-right"></div>
+            <div id="footer-left">
+                David Fetter<br/>
+                September 1, 2020<br/>
+                <a href=mailto:dfetter@appen.com>dfetter@appen.com</a></div>
+            <!-- div id="footer-right">
+                <a href="https://www.appen.com">Appen</a></div -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript">
+        // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+        var header = $('#header').html();
+        if ( window.location.search.match( /print-pdf/gi ) ) {
+            Reveal.addEventListener( 'ready', function( event ) {
+                $('.slide-background').append(header);
+            });
+        }
+        else {
+            $('div.reveal').append(header);
+       }
+    </script>
 	</body>
 </html>
